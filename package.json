@@ -1,0 +1,23 @@
+{
+  "name": "socialbooster",
+  "version": "1.0.0",
+  "description": "Social Booster",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/offlainer/Social-Booster.git"
+  },
+  "keywords": [
+    "social",
+    "booster"
+  ],
+  "author": "Fill&Offlainer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/offlainer/Social-Booster/issues"
+  },
+  "homepage": "https://github.com/offlainer/Social-Booster#readme"
+}
