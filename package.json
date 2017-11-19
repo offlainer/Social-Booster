@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/offlainer/Social-Booster/issues"
   },
-  "homepage": "https://github.com/offlainer/Social-Booster#readme"
+  "homepage": "https://github.com/offlainer/Social-Booster#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
