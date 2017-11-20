@@ -3,12 +3,16 @@ const express = require('express');
 const app = express();
 // Включаем посредника для страницы аутентификации
 const auth = require('./routes/auth');
+
+/* Задаем конфиг для приложения */
+// Название приложения
+app.set('project_name', 'Social Booster');
+// Устанавливаум папку ресурсов по умолчанию
+app.use(express.static('public'));
 // Устанавливаум twig как шаблонизатор по умолчанию
 app.set('views', './views');
 app.set('view engine', 'twig');
-/* Конфигурируем приложение */
-// Название приложения
-app.set('project_name', 'Social Booster');
+
 /* Инициализируем маршруты */
 // Роутим запрос авторизации
 app.use('/auth', auth);
