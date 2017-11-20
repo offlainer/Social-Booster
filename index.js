@@ -13,6 +13,6 @@ app.set('project_name', 'Social Booster');
 // Роутим запрос авторизации
 app.use('/auth', auth);
 // Роутим дефолтный запрос
-app.get('/', (req, res) => res.render('layout', { title : app.get('project_name')}));
+app.get('/', (req, res) => res.render('index', { title : app.get('project_name')}));
 // Запускаем сервер
 app.listen(3000, () => console.log('Server is started'));
