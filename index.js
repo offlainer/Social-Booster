@@ -14,9 +14,11 @@ app.set('views', './views');
 app.set('view engine', 'twig');
 
 /* Инициализируем маршруты */
-// Роутим запрос авторизации
+// Обрабатываем запрос авторизации
 app.use('/auth', auth);
 // Роутим дефолтный запрос
 app.get('/', (req, res) => res.render('index', { title : app.get('project_name')}));
+// Роутим запрос авторизации
+app.get('/auth', (req, res) => res.render('auth'));
 // Запускаем сервер
 app.listen(3000, () => console.log('Server is started'));
