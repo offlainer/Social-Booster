@@ -1,7 +1,0 @@
-{
-  "appName": "Social Booster",
-  "viewRoot": "/views",
-  "appEngine": "twig",
-  "port": "3000",
-  "appRoot": ""
-}
