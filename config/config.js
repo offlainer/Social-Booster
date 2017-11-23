@@ -1,7 +1,8 @@
+const nconf = require('nconf');
+
 /* Задаем конфиг для приложения */
-function loadAppConfig(path = '') {
-    const nconf = require('nconf');
-    const loader = new Promise((resolve) => {
+const loadAppConfig = () => {
+    let loader = new Promise((resolve) => {
         nconf.file({file : __dirname + '/config-local.json'});
 
         if (!nconf.get('appRoot')) {

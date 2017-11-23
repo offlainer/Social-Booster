@@ -1,7 +1,6 @@
 const express = require('express');
-const config = require('../config/config')();
 const router = express.Router();
-const unit = require(config.appRoot + '/units/userUnit');
+const unit = require('../units/userUnit');
 
 router.get('/',  (req, res) => {
     console.log('Route on auth page');
