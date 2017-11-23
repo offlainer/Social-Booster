@@ -2,7 +2,7 @@
 function loadAppConfig(path = '') {
     const nconf = require('nconf');
     const loader = new Promise((resolve) => {
-        nconf.file({file : __dirname + '/config.json'});
+        nconf.file({file : __dirname + '/config-local.json'});
 
         if (!nconf.get('appRoot')) {
             if (!path) path = process.execPath;
