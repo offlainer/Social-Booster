@@ -1,8 +1,8 @@
 const nconf = require('nconf');
 
 /* Задаем конфиг для приложения */
-const loadAppConfig = () => {
-    let loader = new Promise((resolve) => {
+const loadAppConfig = (path = '') => {
+    new Promise(() => {
         nconf.file({file : __dirname + '/config-local.json'});
 
         if (!nconf.get('appRoot')) {
@@ -11,8 +11,7 @@ const loadAppConfig = () => {
             nconf.save();
         }
         nconf.required(['appName', 'appRoot']);
-    });
-    loader.catch((err) => {
+    }).catch((err) => {
         console.log('Cant load the config');
         console.log(err);
         process.exit(1);

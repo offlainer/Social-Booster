@@ -7,10 +7,8 @@ router.get('/',  (req, res) => {
     res.render('auth');
 });
 
-router.post('/',  (req, res) => {
-    unit.addUser(req.body);
-
-    res.redirect('/');
+router.post('/login',  (req, res) => {
+    unit.getUser(req.body.username, res);
 });
 
 module.exports = router;
