@@ -1,7 +1,8 @@
 /* Database service */
-
+const config = require('../config/config')();
 const pgp = require("pg-promise")(/*options*/);
-const db = pgp("postgres://postgres:lightkeeper@localhost:5432/social_booster");
+const db = pgp(`postgres://${config.db.user}:${config.db.password}@` +
+    `${config.db.host}:${config.db.port}/${config.db.name}`);
 
 const Db = {
     /* USERS TYPE REQUESTS */

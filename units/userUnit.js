@@ -10,11 +10,14 @@ const unit = {
     },
     getUser : (data, res) => {
         db.getUser(data).then((user) => {
-            console.log('User "' + user.name + '" with id ' + user.id + ' is exists');
-            res.redirect('/');
-        }).catch((err) => {
-            console.log('User doesn`t exists');
+            if (user) {
+                console.log('User "' + user.name + '" with id ' + user.id + ' is exists');
+                res.redirect('/');
+            }
             res.redirect('/auth#login');
+        }).catch((err) => {
+            console.log(err);
+            process.exit(1);
         });
     }
 };
