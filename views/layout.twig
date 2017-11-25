@@ -1,19 +1,86 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{{ title }}</title>
-    {#<link rel='stylesheet' href='/stylesheets/style.css' />#}
-</head>
-<body>
-
-<div class="head">
-    {% block header %}
-        <div id="_nav" class="nav">Меню навигации</div>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="../css/main.css">
+    {% block styles %}
     {% endblock %}
-</div>
-<div id="_container" class="container">
-    {% block content %}{% endblock %}
+</head>
+<div class="container">
+    <div id="_header">
+        {% block header %}
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">{{ title }}</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Главная</a></li>
+                        <li><a href="#">Инструктаж</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if not user %}
+                            <li><a id="signup-link" href="/auth#signup"><span class="glyphicon glyphicon-user"></span>
+                                    Регистрация</a></li>
+                            <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
+                                    Войти в систему</a></li>
+                        {% else %}
+                            <li><a id="profile" href="/profile/{{ user.id }}"><span class="glyphicon glyphicon-user"></span>
+                                Вы вошли как: {{ user.name }}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        {% endblock %}
+    </div>
+    <div id="_container">
+        {% block content %}{% endblock %}
+    </div>
+    <div id="_footer">
+        {% block footer %}
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">{{ title }}</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Главная</a></li>
+                        <li><a href="#">Инструктаж</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if not user %}
+                            <li><a id="signup-link" href="/auth#signup"><span class="glyphicon glyphicon-user"></span>
+                                    Регистрация</a></li>
+                            <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
+                                    Войти в систему</a></li>
+                        {% else %}
+                            <li><a id="profile" href="/profile/{{ user.id }}"><span class="glyphicon glyphicon-user"></span>
+                                    Вы вошли как: {{ user.name }}</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        {% endblock %}
+    </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        crossorigin="anonymous">
+</script>
+{% block scrits %}
+{% endblock %}
 </body>
 </html>

@@ -1,0 +1,14 @@
+{
+  "appName"   : "Social Booster",
+  "appEngine" : "twig",
+  "appRoot"   : "your app root path",
+  "viewRoot"  : "./views",
+  "port"      : "your server port",
+  "db"        : {
+    "name" : "your db name",
+    "host" : "your db host",
+    "user" : "your db user",
+    "password" : "your db password",
+    "port" : "your db port"
+  }
+}

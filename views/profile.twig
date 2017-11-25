@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="../css/profile.css">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div id="user_media" class="col-md-3">
+            <div class="card text-center">
+                <img class="card-img-top" src="../images/noava.png" alt="User profile image">
+                <div class="card-block">
+                    <h4 class="user-name card-title ">Стивен Кинг</h4>
+                    <p class="user-info card-text">Я ужасен.</p>
+                </div>
+            </div>
+        </div>
+        <div id="user_profile" class="col-md-9">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Профиль</a>
+                    <div id="packages">
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Настройки</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
