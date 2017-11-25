@@ -4,6 +4,7 @@ const app = express();
 const parser = require('body-parser');
 const config = require('./config/config')(__dirname);
 const auth = require('./routes/auth');
+const profile = require('./routes/profile');
 
 // Устанавливаум папку ресурсов по умолчанию
 app.use(express.static('public'));
@@ -17,13 +18,11 @@ app.use(parser.urlencoded({ extended: true }));
 /* Инициализируем маршруты */
 // Обрабатываем запрос авторизации
 app.use('/auth', auth);
+// Обрабатываем запрос страницы профиля
+app.use('/profile', profile);
 // Роутим дефолтный запрос
 app.get('/', (req, res) => {
     res.render('index', { title : config.appName });
-});
-// Роутим запрос на просмотр профиля
-app.get('/profile/:id', (req, res) => {
-    res.render('profile', { req : req.params.id });
 });
 
 // Запускаем сервер и
