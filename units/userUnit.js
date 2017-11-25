@@ -12,9 +12,8 @@ const unit = {
         db.getUser(data).then((user) => {
             if (user) {
                 console.log('User "' + user.name + '" with id ' + user.id + ' is exists');
-                res.redirect('/');
+                res.render('index', { user : user } );
             }
-            res.redirect('/auth#login');
         }).catch((err) => {
             console.log(err);
             process.exit(1);

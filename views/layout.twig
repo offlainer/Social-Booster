@@ -7,7 +7,7 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           crossorigin="anonymous">
     <link rel="stylesheet"
-          href="css/main.css">
+          href="../css/main.css">
     {% block styles %}
     {% endblock %}
 </head>
@@ -26,10 +26,15 @@
                         <li><a href="#">Контакты</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="signup-link" href="/auth#signup"><span class="glyphicon glyphicon-user"></span>
-                                Регистрация</a></li>
-                        <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span> Войти
-                                в систему</a></li>
+                        {% if not user %}
+                            <li><a id="signup-link" href="/auth#signup"><span class="glyphicon glyphicon-user"></span>
+                                    Регистрация</a></li>
+                            <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
+                                    Войти в систему</a></li>
+                        {% else %}
+                            <li><a id="profile" href="/profile/{{ user.id }}"><span class="glyphicon glyphicon-user"></span>
+                                Вы вошли как: {{ user.name }}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

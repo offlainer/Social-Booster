@@ -21,6 +21,10 @@ app.use('/auth', auth);
 app.get('/', (req, res) => {
     res.render('index', { title : config.appName });
 });
+// Роутим запрос на просмотр профиля
+app.get('/profile/:id', (req, res) => {
+    res.render('profile', { req : req.params.id });
+});
 
 // Запускаем сервер и
 app.listen(config.port, () => {

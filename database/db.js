@@ -4,7 +4,7 @@ const pgp = require("pg-promise")(/*options*/);
 const db = pgp(`postgres://${config.db.user}:${config.db.password}@` +
     `${config.db.host}:${config.db.port}/${config.db.name}`);
 
-const Db = {
+const Database = {
     /* USERS TYPE REQUESTS */
 
     /* record new user in database */
@@ -18,4 +18,4 @@ const Db = {
     }
 };
 
-module.exports = Db;
+module.exports = Database;
