@@ -32,7 +32,7 @@
                             <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
                                     Войти в систему</a></li>
                         {% else %}
-                            <li><a id="profile" href="/profile/{{ user.id }}"><span class="glyphicon glyphicon-user"></span>
+                            <li><a id="profile" href="/profile"><span class="glyphicon glyphicon-user"></span>
                                 Вы вошли как: {{ user.name }}</a></li>
                         {% endif %}
                     </ul>
@@ -63,7 +63,7 @@
                             <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
                                     Войти в систему</a></li>
                         {% else %}
-                            <li><a id="profile" href="/profile/{{ user.id }}"><span class="glyphicon glyphicon-user"></span>
+                            <li><a id="profile" href="/profile"><span class="glyphicon glyphicon-user"></span>
                                     Вы вошли как: {{ user.name }}</a></li>
                         {% endif %}
                     </ul>

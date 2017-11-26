@@ -1,13 +1,14 @@
 const Model = require('./base/model');
 
 class User extends Model {
-    constructor (id, type = 0, name, password) {
+    constructor (user) {
         super();
 
-        this.id = id;
-        this.type = type;
-        this.name = name;
-        this.password = password;
+        this.id = user.id;
+        this.type = user.type;
+        this.name = user.name;
+        this.email = user.email;
+        this.password = user.password;
     }
 }
 
