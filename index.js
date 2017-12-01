@@ -36,7 +36,7 @@ app.use('/profile', profile);
 app.get('/', (req, res) => {
     res.render('index', { title : config.appName, user : req.user });
 });
-// Роутинм offline-запрос
+// Роутим logout-запрос
 app.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
