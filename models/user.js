@@ -5,7 +5,7 @@ class User extends Model {
         super();
 
         this.id = user.id;
-        this.type = user.type;
+        this.role = user.role;
         this.name = user.name;
         this.email = user.email;
         this.password = user.password;

@@ -21,19 +21,43 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/">Главная</a></li>
-                        <li><a href="#">Инструктаж</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li>
+                            <a href="#">Инструктаж</a>
+                        </li>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Контакты</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% if not user %}
-                            <li><a id="signup-link" href="/auth#signup"><span class="glyphicon glyphicon-user"></span>
-                                    Регистрация</a></li>
-                            <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
-                                    Войти в систему</a></li>
+                            <li>
+                                <a id="signup-link" href="/auth#signup">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Регистрация
+                                </a>
+                            </li>
+                            <li>
+                                <a id="login-link" href="/auth#login">
+                                    <span class="glyphicon glyphicon-log-in"></span>
+                                    Войти в систему
+                                </a>
+                            </li>
                         {% else %}
-                            <li><a id="profile" href="/profile"><span class="glyphicon glyphicon-user"></span>
-                                Вы вошли как: {{ user.name }}</a></li>
+                            <li>
+                                <a id="profile" href="/profile">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Вы вошли как: {{ user.name }}
+                                </a>
+                            </li>
+                            <li>
+                                <a id="logout" href="/logout">
+                                    <span class="glyphicon glyphicon-logout"></span>
+                                    Выйти
+                                </a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>
@@ -52,19 +76,43 @@
                     </div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/">Главная</a></li>
-                        <li><a href="#">Инструктаж</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li>
+                            <a href="#">Инструктаж</a>
+                        </li>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Контакты</a>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% if not user %}
-                            <li><a id="signup-link" href="/auth#signup"><span class="glyphicon glyphicon-user"></span>
-                                    Регистрация</a></li>
-                            <li><a id="login-link" href="/auth#login"><span class="glyphicon glyphicon-log-in"></span>
-                                    Войти в систему</a></li>
+                            <li>
+                                <a id="signup-link" href="/auth#signup">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Регистрация
+                                </a>
+                            </li>
+                            <li>
+                                <a id="login-link" href="/auth#login">
+                                    <span class="glyphicon glyphicon-log-in"></span>
+                                    Войти в систему
+                                </a>
+                            </li>
                         {% else %}
-                            <li><a id="profile" href="/profile"><span class="glyphicon glyphicon-user"></span>
-                                    Вы вошли как: {{ user.name }}</a></li>
+                            <li>
+                                <a id="profile" href="/profile">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Вы вошли как: {{ user.name }}
+                                </a>
+                            </li>
+                            <li>
+                                <a id="logout" href="/logout">
+                                    <span class="glyphicon glyphicon-logout"></span>
+                                    Выйти
+                                </a>
+                            </li>
                         {% endif %}
                     </ul>
                 </div>

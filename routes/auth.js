@@ -6,7 +6,6 @@ router.get('/',  (req, res) => {
     console.log('App => Middleware[Auth] : Route to the auth page');
     res.render('auth');
 });
-
 router.post('/login',  (req, res) => {
     console.log('App => Middleware[Auth] : Route to the login page');
     unit.login(req, res);
