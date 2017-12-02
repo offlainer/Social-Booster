@@ -40,9 +40,11 @@ app.get('/', (req, res) => {
 });
 // Роутим logout-запрос
 app.get('/logout', (req, res) => {
-    log.done(`User ${req.user.name} is logout now`);
-    req.logout();
-    res.redirect('/');
+    if (req.user) {
+        log.done(`User ${req.user.name} is logout now`);
+        req.logout();
+        res.redirect('/');
+    }
 });
 
 // Запускаем сервер
