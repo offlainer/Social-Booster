@@ -15,7 +15,7 @@ app.use(express.static('public'));
 // Устанавливаум cookie
 app.use(session({
     secret: "sb0prj",
-    cookie: { maxAge: 1000 * 60 * 2}
+    cookie: { maxAge: 1000 * 60}
 }));
 // Устанавливаум twig как шаблонизатор по умолчанию
 app.set('views', config.viewRoot);
@@ -43,8 +43,8 @@ app.get('/logout', (req, res) => {
     if (req.user) {
         log.done(`User ${req.user.name} is logout now`);
         req.logout();
-        res.redirect('/');
     }
+    res.redirect('/');
 });
 
 // Запускаем сервер
