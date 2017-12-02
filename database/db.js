@@ -16,7 +16,7 @@ const Database = {
     getUser : function (username, password) {
         return db.one('SELECT * FROM users WHERE email = $1 AND password = $2', [username, password]);
     },
-    /* get specified user from database by passed id*/
+    /* get specified user from database by passed id */
     getUserById : function (id) {
         return db.one('SELECT * FROM users WHERE id = $1', id);
     }

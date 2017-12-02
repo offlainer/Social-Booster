@@ -1,5 +1,5 @@
 const nconf = require('nconf');
-
+const log = require('../config/eye')('core[config]');
 /* Задаем конфиг для приложения */
 const loadAppConfig = (path = '') => {
     new Promise(() => {
@@ -12,8 +12,7 @@ const loadAppConfig = (path = '') => {
         }
         nconf.required(['appName', 'appRoot']);
     }).catch((err) => {
-        console.log('Cant load the config');
-        console.log(err);
+        log.err('Cant load the config', err.message);
         process.exit(1);
     });
 

@@ -7,20 +7,19 @@ passport.use(new strategy({
     passwordField: 'password'
 }, function (username, password, done) {
     db.getUser(username, password).then((user) => {
-        return done(null, user, 'App => Passport : Well, user is exists in database');
+        return done(null, user, 'Well, user is exists in database');
     }).catch((err) => {
         done(err);
     })
 }));
 
 passport.serializeUser(function (user, done) {
-    console.log(`App => Passport : New session for user ${user.email} was created`);
     done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
     db.getUserById(id).then((user) => {
-        done(null, user, 'App => Passport : Well, user is exists in the current session');
+        done(null, user);
     }).catch((err) => {
         done(err);
     })

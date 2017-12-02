@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const config = require('./config/config')(__dirname);
+const log = require('./config/eye')('core');
 const passport = require('./config/passport');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -32,21 +33,23 @@ app.use(passport.session());
 app.use('/auth', auth);
 // Обрабатываем запрос страницы профиля
 app.use('/profile', profile);
-// Роутим дефолтный запрос
+// Роутим home запрос
 app.get('/', (req, res) => {
+    log.info('Route to the home page');
     res.render('index', { title : config.appName, user : req.user });
 });
 // Роутим logout-запрос
 app.get('/logout', (req, res) => {
+    log.done(`User ${req.user.name} is logout now`);
     req.logout();
     res.redirect('/');
 });
 
 // Запускаем сервер
 app.listen(config.port, () => {
-    console.log('Core : Server is run on port: ' + config.port);
-    console.log('Core : Application is running');
-    console.log('Core : Config is loaded');
+    log.info(`Server is run on port: ${config.port}`);
+    log.info('Application is running');
+    log.info('Config is loaded');
 });
 
 

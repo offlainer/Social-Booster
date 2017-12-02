@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const unit = require('../units/user-unit');
+const unit = require('../controllers/user-controller');
+const log = require('../config/eye')('router[auth]');
 
 router.get('/',  (req, res) => {
-    console.log('App => Middleware[Auth] : Route to the auth page');
+    log.info('Route to the auth page');
     res.render('auth');
 });
 router.post('/login',  (req, res) => {
-    console.log('App => Middleware[Auth] : Route to the login page');
+    log.info('Post on the login page');
     unit.login(req, res);
 });
 router.post('/signup',  (req, res) => {
-    console.log('App => Middleware[Auth] : Route to the signup page');
+    log.info('Post on the signup page');
     unit.signup(req, res);
 });
 
