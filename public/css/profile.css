@@ -4,3 +4,10 @@
 .card-img-top {
     max-width : 20rem;
 }
+.section {
+    margin-top : 1rem;
+}
+
+.account {
+    padding: 10px 5px;
+}

@@ -19,13 +19,28 @@
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Профиль</a>
-                    <div id="packages">
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Настройки</a>
                 </li>
             </ul>
+            <div id="accounts" class="section row">
+                <p class="h4">Подключение социального аккаунта</p>
+                <div id="accounts__vk" class="account">
+                    {% if not vk %}
+                        <button id="connect_vk_account" class="btn btn-default">
+                                Подключить аккаунт Vkontakte
+                        </button>
+                    {% else %}
+                        {#<p>Подключен VK - аккаунт <b>{{ vk.domain }}</b></p>#}
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="../js/profile.js"></script>
+    <script src="https://vk.com/js/api/openapi.js?150" type="text/javascript"></script>
 {% endblock %}
