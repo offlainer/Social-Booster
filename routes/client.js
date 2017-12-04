@@ -36,6 +36,7 @@ function getConfigValue(params) {
             let p1 = config[params[0]][params[1]];
             if (p1) {
                 let p2 = config[params[0]][params[1]][params[2]];
+
                 if (p2) {
                     return p2
                 } else {

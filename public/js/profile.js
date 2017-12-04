@@ -2,21 +2,9 @@ $(document).ready(function() {
     /* TODO
     * add on fail handler of a request
     * */
-    $('button#connect_vk_account').on('click', function () {
-        $.ajax({
-            method : 'get',
-            url : '/client?method=config&params=social,appId',
-            dataType : 'json'
-        }).done((res) => {
-            if (res) {
-                VK.init({
-                    apiId : res
-                });
-            }
-        }).fail(() => {
-            alert('Something goes wrong');
-        });
+    initVkApi();
 
+    $('button#connect_vk_account').on('click', function () {
         VK.Auth.login((res) => {
             $.ajax({
                 method : 'post',
@@ -32,6 +20,22 @@ $(document).ready(function() {
             })
         });
     });
+
+    function initVkApi() {
+        $.ajax({
+            method : 'get',
+            url : '/client?method=config&params=social,vk,appId',
+            dataType : 'json'
+        }).done((res) => {
+            if (res ) {
+                VK.init({
+                    apiId : res
+                });
+            }
+        }).fail(() => {
+            alert('Something goes wrong');
+        });
+    }
 
     function bindUserVkData(user) {
         let section = `<p>Подключен VK - аккаунт : <br> 

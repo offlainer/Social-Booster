@@ -12,6 +12,8 @@
     "port" : "your db port"
   },
   "social"    : {
-    "appId" : "6283122"
+    "vk" : {
+      "appId" : "6283122"
+    }
   }
 }
