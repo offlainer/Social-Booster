@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const auth = require('./routes/auth');
 const profile = require('./routes/profile');
+const client = require('./routes/client');
 
 /* Инициализируем middlewares */
 // Устанавливаум папку ресурсов по умолчанию
@@ -33,6 +34,8 @@ app.use(passport.session());
 app.use('/auth', auth);
 // Обрабатываем запрос страницы профиля
 app.use('/profile', profile);
+// Обрабатываем запросы от клиента
+app.use('/client', client);
 // Роутим home запрос
 app.get('/', (req, res) => {
     log.info('Route to the home page');

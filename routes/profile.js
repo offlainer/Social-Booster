@@ -13,18 +13,18 @@ router.get('/', (req, res) => {
 });
 router.post('/bind-vk',  (req, res) => {
     log.info('Post to the VK auth page');
-    req.body.status = '123';
+
     if ( req.body.status !== 'connected') {
         let message = 'Bad auth data or server internal API error';
         log.err('Can`t auth a user with vk', message);
-        res.status(500).json({ error : message});
+        res.sendStatus(500);
     } else {
         if (req.body.session.user) {
             res.send(req.body.session.user);
         } else {
             let message = 'Empty body request';
             log.err('Can`t auth a user with vk', message);
-            res.status(500).json({ error : message});
+            res.sendStatus(500);
         }
     }
 });
