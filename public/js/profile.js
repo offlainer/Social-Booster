@@ -13,7 +13,7 @@ $(document).ready(function() {
                 dataType : 'json'
             }).done((res) => {
                 if (res) {
-                    bindUserVkData(res);
+                    boundUserVkData(res);
                 }
             }).fail(() => {
                 alert('Something goes wrong');
@@ -27,7 +27,7 @@ $(document).ready(function() {
             url : '/client?method=config&params=social,vk,appId',
             dataType : 'json'
         }).done((res) => {
-            if (res ) {
+            if (res) {
                 VK.init({
                     apiId : res
                 });
@@ -37,7 +37,7 @@ $(document).ready(function() {
         });
     }
 
-    function bindUserVkData(user) {
+    function boundUserVkData(user) {
         let section = `<p>Подключен VK - аккаунт : <br> 
             <b>${ user.first_name } ${ user.last_name }</b></p>`;
 

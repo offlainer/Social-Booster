@@ -18,7 +18,7 @@ const eye = (unitName) => {
         },
         info : function (msg) {
             debug.log = console.info.bind(console);
-            debug(`${this.name} => ${chalk.blue(msg)}`);
+            debug(`${chalk.whiteBright(this.name)} => ${chalk.blue(msg)}`);
         },
         /* logging error message */
         err : function (msg, rsn = '') {
@@ -28,7 +28,7 @@ const eye = (unitName) => {
         /* logging success message */
         done : function (msg) {
             debug.log = console.info.bind(console);
-            debug(`${this.name} => ${chalk.green(msg)}`);
+            debug(`${chalk.whiteBright(this.name)} => ${chalk.green(msg)}`);
         }
     }
 };

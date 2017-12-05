@@ -29,7 +29,7 @@ const unit = {
     signup: (req, res) => {
         log.info('Try to signup a user');
 
-        db.addUser(req.body)
+        db.users.add(req.body)
             .then((data) => {
                 log.info('Try to login a new user');
                 try {

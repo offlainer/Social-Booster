@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const unit = require('../controllers/account-controller');
 const log = require('../config/eye')('router[profile]');
 
 router.get('/', (req, res) => {
@@ -20,7 +21,7 @@ router.post('/bind-vk',  (req, res) => {
         res.sendStatus(500);
     } else {
         if (req.body.session.user) {
-            res.send(req.body.session.user);
+            unit.save(req, res);
         } else {
             let message = 'Empty body request';
             log.err('Can`t auth a user with vk', message);

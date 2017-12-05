@@ -32,10 +32,11 @@ app.use(passport.session());
 /* Инициализируем маршруты */
 // Обрабатываем запрос авторизации
 app.use('/auth', auth);
-// Обрабатываем запрос страницы профиля
-app.use('/profile', profile);
 // Обрабатываем запросы от клиента
 app.use('/client', client);
+// Обрабатываем запрос страницы профиля
+app.use('/profile', profile);
+
 // Роутим home запрос
 app.get('/', (req, res) => {
     log.info('Route to the home page');

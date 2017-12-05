@@ -6,7 +6,7 @@ passport.use(new strategy({
     usernameField: 'username',
     passwordField: 'password'
 }, function (username, password, done) {
-    db.getUser(username, password).then((user) => {
+    db.users.get(username, password).then((user) => {
         return done(null, user, 'Well, user is exists in database');
     }).catch((err) => {
         done(err);
@@ -18,7 +18,7 @@ passport.serializeUser(function (user, done) {
 });
 
 passport.deserializeUser(function (id, done) {
-    db.getUserById(id).then((user) => {
+    db.users.getById(id).then((user) => {
         done(null, user);
     }).catch((err) => {
         done(err);
