@@ -1,7 +1,7 @@
 const config = require('../config/config')();
 const pgp = require("pg-promise")(/*options*/);
 const db = pgp(`postgres://${config.db.user}:${config.db.password}@` +
-    `${config.db.host}:${config.db.port}/${config.db.name}`);
+            `${config.db.host}:${config.db.port}/${config.db.name}`);
 
 /* Database service */
 
@@ -10,8 +10,8 @@ const database = {
     users : {
         /* record new user in database */
         add : (user) => {
-            return db.one('INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
-                [user.username, user.email, user.password]);
+            return db.one(__prepareQuery('INSERT INTO users (&fields) VALUES (&values) RETURNING *',
+                user));
         },
         /* get specified user from database */
         get : (username, password) => {
@@ -24,10 +24,30 @@ const database = {
     },
     accounts : {
         add : (account) => {
-           
+            return db.one(__prepareQuery('INSERT INTO accounts(&fields)' +
+                ' VALUES (&values) RETURNING *', account));
         }
     }
 
+};
+
+/* Format a data as string before perform a query */
+const __prepareQuery = (query, data) => {
+    let fields = '', values  = '';
+
+    for (let field in data) {
+        fields += `${field},`;
+    }
+
+    for (let value of Object.values(data)) {
+        values += `'${value}',`;
+    }
+
+    query = query.replace(new RegExp(`(\\(&fields\\))\\s([\\w]+)\\s(\\(&values\\))`, 'i'),
+        `(${fields.slice(0, -1)}) $2 (${values.slice(0, -1)})`
+    );
+
+    return query;
 };
 
 module.exports = database;

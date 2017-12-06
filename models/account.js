@@ -4,7 +4,7 @@ class Account extends Model {
     constructor (account) {
         super();
 
-        this.id = '';
+        this.id = null;
         this.profile_id = account.id;
         this.domain = account.domain;
         this.first_name = account.first_name;
@@ -12,6 +12,8 @@ class Account extends Model {
         this.url = account.href;
         this.user_id = null;
         this.provider = null;
+
+        this.ignored.dbFields = ['id'];
     }
 }
 

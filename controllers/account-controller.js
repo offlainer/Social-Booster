@@ -11,15 +11,14 @@ const unit = {
         account.provider = 'vkontakte';
         account.user_id = req.user.id;
 
-        db.accounts.add(account).then((account) => {
+        db.accounts.add(account.db()).then(() => {
             log.done(`Account of user ${req.user.email} was bound!`);
 
-            res.status(200).send(account);
+            res.status(200).send(account.client());
         }).catch((err) => {
-            log.log(err);
             dbLog.err(err.message);
 
-            res.sendStatus(500);
+            res.status(500).send('Sorry, but something go wrong');
         });
     }
 };

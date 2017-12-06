@@ -17,10 +17,12 @@ const unit = {
                             res.redirect('/');
                         });
                     } else {
-                        throw new Error(`User with email ${req.body.username} is not exists`);
+                        throw new Error(`User with email ${req.body.username} 
+                            is not exists or password is wrong`);
                     }
                 } catch(e) {
                     log.err('Unable to login user', e.message);
+
                     res.redirect('/auth#login');
                 }
             }
@@ -29,22 +31,30 @@ const unit = {
     signup: (req, res) => {
         log.info('Try to signup a user');
 
-        db.users.add(req.body)
+        let user = new User(req.body);
+
+        db.users.add(user.db())
             .then((data) => {
                 log.info('Try to login a new user');
-                try {
-                    let user = new User(data);
 
-                    req.logIn(user, function () {
-                        log.done(`User with email ${user.email} was registred!`);
-                        res.redirect('/');
-                    });
+                try {
+                    if (data) {
+                        user.id = data.id;
+
+                        req.logIn(user, function () {
+                            log.done(`User with email ${user.email} was registred!`);
+
+                            res.redirect('/');
+                        });
+                    } else {
+                        throw new Error('Empty data returns');
+                    }
                 } catch(err) {
                     log.err('Unable to login a new user', err.message);
                     process.exit(1);
                 }
             }).catch((err) => {
-                log.err('Unable to save a new user', err.message);
+                log.err('Unable to save a new user in the database', err.message);
                 process.exit(1);
         });
     }

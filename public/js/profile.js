@@ -15,8 +15,8 @@ $(document).ready(function() {
                 if (res) {
                     boundUserVkData(res);
                 }
-            }).fail(() => {
-                alert('Something goes wrong');
+            }).fail((err) => {
+                alert(err.responseText);
             })
         });
     });
