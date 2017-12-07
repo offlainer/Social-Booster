@@ -4,7 +4,7 @@ const User = require('../models/user');
 const log = require('../config/eye')('controller[user]');
 
 const unit = {
-    login: (req, res) => {
+    login : (req, res) => {
         log.info('Try to login a user');
 
         passport.authenticate('local',
@@ -28,7 +28,7 @@ const unit = {
             }
         )(req, res);
     },
-    signup: (req, res) => {
+    signup : (req, res) => {
         log.info('Try to signup a user');
 
         let user = new User(req.body);
@@ -56,6 +56,28 @@ const unit = {
             }).catch((err) => {
                 log.err('Unable to save a new user in the database', err.message);
                 process.exit(1);
+        });
+    },
+    account : (req, res, provider = null) => {
+        log.info('Try to get a user account');
+
+        let condition = {'user_id' : req.user.id};
+
+        if (provider) {
+            condition.provider = provider;
+        }
+
+        db.accounts.get(condition).then((data) => {
+            if (data) {
+                log.done(`Accounts list of the user ${req.user.id} was loaded!`);
+
+                res.send(data);
+            } else {
+                throw new Error(`Can't load an account of the user ${req.user.email}`);
+            }
+        }).catch((err) => {
+            log.err(err);
+            process.exit(1);
         });
     }
 };

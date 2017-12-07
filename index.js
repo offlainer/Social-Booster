@@ -40,6 +40,7 @@ app.use('/profile', profile);
 // Роутим home запрос
 app.get('/', (req, res) => {
     log.info('Route to the home page');
+
     res.render('index', { title : config.appName, user : req.user });
 });
 // Роутим logout-запрос

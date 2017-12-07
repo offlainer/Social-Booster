@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const unit = require('../controllers/account-controller');
+const accountUnit = require('../controllers/account-controller');
 const log = require('../config/eye')('router[profile]');
 
 router.get('/', (req, res) => {
     log.info('Route to profile page');
 
     if (req.isAuthenticated()) {
-        res.render('profile', { user : req.user });
+        accountUnit.get(req, res);
     } else {
         res.redirect('/');
     }
@@ -21,7 +21,7 @@ router.post('/bind-vk',  (req, res) => {
         res.sendStatus(500);
     } else {
         if (req.body.session.user) {
-            unit.save(req, res);
+            accountUnit.save(req, res);
         } else {
             let message = 'Empty body request';
             log.err('Can`t auth a user with vk', message);

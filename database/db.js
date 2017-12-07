@@ -26,6 +26,9 @@ const database = {
         add : (account) => {
             return db.one(__prepareQuery('INSERT INTO accounts(&fields)' +
                 ' VALUES (&values) RETURNING *', account));
+        },
+        get : (cond) => {
+            return db.one(__prepareSelect('SELECT * FROM accounts', cond));
         }
     }
 
@@ -49,5 +52,22 @@ const __prepareQuery = (query, data) => {
 
     return query;
 };
+
+function __prepareSelect(query, cond) {
+    if (cond) {
+        let i = 0;
+
+        query += ' WHERE ';
+
+        for (let field in cond) {
+            i++;
+            query += `${field} = '${cond[field]}'`;
+
+            if (i < Object.keys(cond).length) query += ' AND ';
+        }
+    }
+
+    return query;
+}
 
 module.exports = database;

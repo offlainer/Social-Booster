@@ -6,27 +6,38 @@ const log = require('../config/eye')('router[client]');
 router.get('/', (req, res) => {
     const method = req.query.method;
     const params = req.query.params.split(',');
-    let answer = '';
+
+    log.info('Get a request from the client side');
 
     try {
         if (method) {
             if (method === 'config') {
-                answer = getConfigValue(params);
+                getConfigValue(params, res);
+            } else if (method === 'account') {
+                getUserAccount(req, res, params[0]);
             } else {
                 throw new Error(`Undefined method '${method}'`);
             }
         } else {
             throw new Error('Method is not specified');
         }
-
-        res.send(answer);
     } catch (e) {
         log.err(`Cant't load data from server : ${e.message}`);
-        res.sendStatus(500);
+        res.status(500).send(e.message);
     }
 });
 
-function getConfigValue(params) {
+function getUserAccount(req, res, provider) {
+    const userUnit = require('../controllers/user-controller');
+
+    userUnit.account(req, res, provider);
+}
+
+function getConfigValue(params, res) {
+    let answer = {};
+
+    log.info('Try to get a config value');
+
     if (params) {
         /* TODO
         *  The parse of every config properties looks ridiculous
@@ -34,21 +45,32 @@ function getConfigValue(params) {
         * */
         if (config.hasOwnProperty(params[0])) {
             let p1 = config[params[0]][params[1]];
+
             if (p1) {
                 let p2 = config[params[0]][params[1]][params[2]];
 
                 if (p2) {
-                    return p2
+                    answer = p2;
                 } else {
-                    return p1;
+                    answer = p1;
                 }
             } else {
-                return config[params[0]];
+                answer = config[params[0]];
             }
+        } else {
+            throw new Error(`Config value ${params[0]} is not exists`);
         }
+    } else {
+        throw new Error('Empty a request params');
     }
 
-    return config;
+    if (answer) {
+        log.done(`Config value '${params[0]}' is received`);
+
+        res.send(answer);
+    } else {
+        throw new Error(`Config value is empty`);
+    }
 }
 
 module.exports = router;
