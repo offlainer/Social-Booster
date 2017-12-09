@@ -8,6 +8,11 @@
     margin-top : 1rem;
 }
 
-.account {
-    padding: 10px 5px;
+.accounts-list {
+    padding: 1px 5px;
+}
+
+.scl-btn {
+    display: block;
+    margin: 15px 0;
 }

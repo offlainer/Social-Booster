@@ -3,11 +3,19 @@ const router = express.Router();
 const accountUnit = require('../controllers/account-controller');
 const log = require('../config/eye')('router[profile]');
 
+/*
+================================================================
+ Profile page middleware the class
+================================================================
+ Present of the processing of a requests to the profile page
+================================================================
+*/
+
 router.get('/', (req, res) => {
     log.info('Route to profile page');
 
     if (req.isAuthenticated()) {
-        accountUnit.get(req, res);
+        res.render('profile', { user : req.user });
     } else {
         res.redirect('/');
     }

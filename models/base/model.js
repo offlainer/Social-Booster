@@ -1,28 +1,60 @@
+/*
+================================================================
+ The model`s base class
+================================================================
+ Present of the prototype for a other models classes
+================================================================
+*/
 
 class Model {
     constructor() {
-        /* Fields list that should not return when need to send it to the client side
-            or save it in the database
-         */
+        /*
+        ================================================================
+         Fields list that should not return
+         when need to send it to the client side
+         or save it in the database
+        ================================================================
+        */
         this.ignored = {
-            /* the client side of ignore list */
+            /*
+            ================================================================
+             The client side of ignore list
+            ================================================================
+            */
             clientFields : [],
-            /* the database of ignore list */
+            /*
+            ================================================================
+             The database of ignore list
+            ================================================================
+            */
             dbFields : []
         }
     }
-    /* Get an instance with a ignored fields for the client side */
+    /*
+    ================================================================
+     Get an instance with a ignored fields for the client side
+    ================================================================
+    */
     client() {
         return this.__ignored('client');
     };
-    /* Get an instance with a ignored fields for the database */
+    /*
+    ================================================================
+     Get an instance with a ignored fields for the database
+    ================================================================
+    */
     db() {
         return this.__ignored('db');
     };
-    /* Returns an filtered instance for the client side or the database
-    *  #private
-    *  @param type : string // For the client side or the database
-    * */
+    /*
+    ================================================================
+     Filter an instance for the client side or the database
+    ================================================================
+     >>> string [type] : client side or the database >>>
+    ================================================================
+     <<< string <<<
+    ================================================================
+    */
     __ignored(type) {
         let thing = {},
         fields = type === 'client' ?

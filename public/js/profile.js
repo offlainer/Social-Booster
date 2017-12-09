@@ -1,10 +1,15 @@
 $(document).ready(function() {
     /* TODO
-    * add on fail handler of a request
+    * Add the on fail handler of a request
     * */
     initVkApi();
 
-    $('button#connect_vk_account').on('click', function () {
+    /**
+    * Authorize user in it the Vkontakte account
+    */
+    $('button#connect_Vkontakte_account').on('click', function (e) {
+        $(e.target).remove();
+
         VK.Auth.login((res) => {
             $.ajax({
                 method : 'post',
@@ -21,6 +26,9 @@ $(document).ready(function() {
         });
     });
 
+    /**
+     * Initiate the Vkontakte API
+     */
     function initVkApi() {
         $.ajax({
             method : 'get',
@@ -37,10 +45,14 @@ $(document).ready(function() {
         });
     }
 
-    function boundUserVkData(user) {
+    /**
+     * Show a user the Vkontakte social account block on the profile page
+     * @param account : account of a user
+     */
+    function boundUserVkData(account) {
         let section = `<p>Подключен VK - аккаунт : <br> 
             <b>${ user.first_name } ${ user.last_name }</b></p>`;
 
-        $('#accounts__vk').empty().append(section);
+        $('.accounts-list').prepend(section);
     }
 });

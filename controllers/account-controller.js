@@ -3,6 +3,14 @@ const Account = require('../models/account');
 const log = require('../config/eye')('controller[account]');
 const dbLog = require('../config/eye')('database');
 
+/*
+================================================================
+ Account controller the class
+================================================================
+ Present of a instruments for work with a user social accounts
+================================================================
+*/
+
 const unit = {
     save : (req, res) => {
         log.info('Try to save a user social account');

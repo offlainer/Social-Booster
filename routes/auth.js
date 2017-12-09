@@ -3,6 +3,14 @@ const router = express.Router();
 const unit = require('../controllers/user-controller');
 const log = require('../config/eye')('router[auth]');
 
+/*
+================================================================
+ Auth page middleware the class
+================================================================
+ Present of the processing of a requests to the auth page
+================================================================
+*/
+
 router.get('/',  (req, res) => {
     log.info('Route to the auth page');
     res.render('auth');

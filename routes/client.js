@@ -3,6 +3,15 @@ const router = express.Router();
 const config = require('../config/config')();
 const log = require('../config/eye')('router[client]');
 
+/*
+================================================================
+ Client side middleware the class
+================================================================
+ Present of the processing of a requests to the server
+ from the client side
+================================================================
+*/
+
 router.get('/', (req, res) => {
     const method = req.query.method;
     const params = req.query.params.split(',');

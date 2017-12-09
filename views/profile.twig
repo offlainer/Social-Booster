@@ -1,4 +1,5 @@
 {% extends 'layout.twig' %}
+{% import 'classes/social.class.twig' as social %}
 
 {% block styles %}
     <link rel="stylesheet" href="../css/profile.css">
@@ -10,8 +11,8 @@
             <div class="card text-center">
                 <img class="card-img-top" src="../images/noava.png" alt="User profile image">
                 <div class="card-block">
-                    <h4 class="user-name card-title ">{{ user.profile.name }}</h4>
-                    <p class="user-info card-text">{{ user.profile.email }}</p>
+                    <h4 class="user-name card-title ">{{ user.name }}</h4>
+                    <p class="user-info card-text">{{ user.email }}</p>
                 </div>
             </div>
         </div>
@@ -24,16 +25,30 @@
                     <a class="nav-link" href="#">Настройки</a>
                 </li>
             </ul>
-            <div id="accounts" class="section row">
+            <div id="accounts_block" class="section row">
                 <p class="h4">Подключение социального аккаунта</p>
-                <div id="accounts__vk" class="account">
-                    {% if not user.account %}
-                        <button id="connect_vk_account" class="btn btn-default">
-                                Подключить аккаунт Vkontakte
-                        </button>
+                <div class="accounts-list">
+                    {# Check for a user social accounts #}
+                    {% if not user.accounts.vk %}
+                        {{ social.connectBtn('Vkontakte') }}
                     {% else %}
-                        <p>Подключен VK - аккаунт : <br>
-                            <b>{{ user.account.first_name }} {{ user.account.last_name }}</b></p>
+                        {{ social.accountBlock(user.accounts.vk.provider,
+                            user.accounts.vk.first_name,
+                            user.accounts.vk.last_name) }}
+                    {% endif %}
+                    {% if not user.accounts.fb %}
+                        {{ social.connectBtn('Facebook') }}
+                    {% else %}
+                        {{ social.accountBlock(user.accounts.fb.provider,
+                            user.accounts.fb.first_name,
+                            user.accounts.fb.last_name) }}
+                    {% endif %}
+                    {% if not user.accounts.tw %}
+                        {{ social.connectBtn('Twitter') }}
+                    {% else %}
+                        {{ social.accountBlock(user.accounts.tw.provider,
+                            user.accounts.tw.first_name,
+                            user.accounts.tw.last_name) }}
                     {% endif %}
                 </div>
             </div>

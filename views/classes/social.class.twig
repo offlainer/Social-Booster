@@ -1,0 +1,20 @@
+{# Button is connect user social account with a it the base account #}
+{% macro connectBtn(provider) %}
+     <div id ="connect_block_{{ provider }}">
+        <button id="connect_{{ provider }}_account" class="scl-btn btn btn-default">
+            Подключить {{ provider }} аккаунт
+        </button>
+     </div>
+{% endmacro %}
+
+{# Element that is present of a user social account on the profile page #}
+{% macro accountBlock(provider, firstName, lastName) %}
+    <div id ="account_block_{{ provider }}">
+        <p>
+            Подключен аккаунт <b>{{ provider }}</b> :
+        </p>
+        <p>
+            <b>{{ firstName }} {{ lastName }}</b>
+        </p>
+    </div>
+{% endmacro %}

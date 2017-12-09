@@ -1,6 +1,14 @@
 const nconf = require('nconf');
 const log = require('../config/eye')('core[config]');
-/* Задаем конфиг для приложения */
+
+/*
+================================================================
+ Application config the class
+================================================================
+ Present of a how the application should be behave of self
+================================================================
+*/
+
 const loadAppConfig = (path = '') => {
     new Promise(() => {
         nconf.file({file : __dirname + '/config-local.json'});
