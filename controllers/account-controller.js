@@ -16,11 +16,24 @@ const unit = {
         log.info('Try to save a user social account');
 
         let account = new Account(req.body.session.user);
-        account.provider = 'vkontakte';
         account.user_id = req.user.id;
 
-        db.accounts.add(account.db()).then(() => {
+        if (req.query.provider) {
+            account.provider = req.query.provider;
+        }
+
+        db.accounts.add(account.db()).then((data) => {
             log.done(`Account ${account.domain} of user ${req.user.email} was bound!`);
+
+            account.id = data.id;
+
+            if (account.provider === Account.providers().vk) {
+                req.user.accounts.vk = account;
+            } else if (account.provider === Account.providers().fb) {
+                req.user.accounts.fb = account;
+            } else if (account.provider === Account.providers().tw) {
+                req.user.accounts.tw = account;
+            }
 
             res.status(200).send(account.client());
         }).catch((err) => {

@@ -1,3 +1,12 @@
+const DOM = {
+    accounts : {
+        section : "<div id ='account_block_'>" +
+                    "<p class='provider-name'></p>" +
+                    "<p class='profile-name'></p>" +
+                  "</div>"
+    }
+};
+
 $(document).ready(function() {
     /* TODO
     * Add the on fail handler of a request
@@ -8,12 +17,12 @@ $(document).ready(function() {
     * Authorize user in it the Vkontakte account
     */
     $('button#connect_Vkontakte_account').on('click', function (e) {
-        $(e.target).remove();
+        $(e.target).parent().remove();
 
         VK.Auth.login((res) => {
             $.ajax({
                 method : 'post',
-                url : '/profile/bind-vk/',
+                url : '/profile/bind-account?provider=Vkontakte',
                 data : res,
                 dataType : 'json'
             }).done((res) => {
@@ -50,8 +59,11 @@ $(document).ready(function() {
      * @param account : account of a user
      */
     function boundUserVkData(account) {
-        let section = `<p>Подключен VK - аккаунт : <br> 
-            <b>${ user.first_name } ${ user.last_name }</b></p>`;
+        let section = $(DOM.accounts.section);
+
+        $(section).attr('id', $(section).attr('id') + account.provider);
+        $(section).find("p:first").html(`Подключен аккаунт <b>${account.provider}</b> : `);
+        $(section).find("p:last").html(`<b>${account.first_name} ${account.last_name}</b>`);
 
         $('.accounts-list').prepend(section);
     }

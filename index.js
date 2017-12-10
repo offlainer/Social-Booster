@@ -16,7 +16,7 @@ app.use(express.static('public'));
 // Устанавливаум cookie
 app.use(session({
     secret: "sb0prj",
-    cookie: { maxAge: 1000 * 60 * 2}
+    cookie: { maxAge: 1000 * 60 * 5}
 }));
 // Устанавливаум twig как шаблонизатор по умолчанию
 app.set('views', config.viewRoot);

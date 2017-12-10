@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
         res.redirect('/');
     }
 });
-router.post('/bind-vk',  (req, res) => {
+router.post('/bind-account',  (req, res) => {
     log.info('Post to the VK auth page');
 
     if ( req.body.status !== 'connected') {
