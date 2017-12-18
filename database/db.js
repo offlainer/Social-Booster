@@ -62,10 +62,10 @@ const database = {
 /* Format a data as string before perform a query */
 /*
 ================================================================
- Format a data as string before perform a query
+ Format a content as string before perform a query
 ================================================================
  >>> string [query] : query to the database >>>
- >>> object [data] : input data >>>
+ >>> object [content] : input content >>>
 ================================================================
  <<< string <<<
 ================================================================

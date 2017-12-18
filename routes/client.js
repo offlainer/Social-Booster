@@ -74,7 +74,7 @@ function getConfigValue(params, res) {
     }
 
     if (answer) {
-        log.done(`Config value '${params[0]}' is received`);
+        log.done(`Config value got. Send the answer`);
 
         res.send(answer);
     } else {

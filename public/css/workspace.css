@@ -1,0 +1,53 @@
+.provider-opt-block {
+    display: inline-block;
+    padding: 10px 10px;
+}
+
+.control-panel.providers {
+    padding: 5px 0;
+    margin: 5px 0;
+}
+
+.panel-body {
+    padding: 5px 15px;
+}
+
+p.h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+p.h4 {
+    font-size: 0.8em;
+    font-weight: 300;
+    padding: 0 3px;
+    text-align: start;
+}
+
+p.welcome {
+    padding: 15px 0;
+    margin: 0;
+}
+
+.actions-list {
+    padding: 8px;
+    background: #0830f50d;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.25);
+}
+
+#action__output {
+    display: none;
+}
+
+.panel--output {
+    display: inline-block;
+}
+
+.panel--input-values {
+    display: none;
+}
+
+.control-panel--actions {
+    display:  inline-flex;
+}

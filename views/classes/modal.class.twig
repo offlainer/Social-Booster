@@ -1,0 +1,17 @@
+{# Info modal block #}
+{% macro info(message) %}
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> {{ message.getInfoHead() | nl2br }} </h4>
+            </div>
+            <div class="modal-body">
+                <p> {{ message.getInfoBody() | nl2br }} </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

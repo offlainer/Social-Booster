@@ -94,7 +94,7 @@ const unit = {
                             res.redirect('/');
                         });
                     } else {
-                        throw new Error('Empty data returns');
+                        throw new Error('Empty content returns');
                     }
                 } catch(err) {
                     log.err('Unable to login a new user', err.message);

@@ -1,0 +1,63 @@
+{# Main menu block #}
+{% macro mainMenu(page, fixed) %}
+    <nav class="navbar navbar-default {% if fixed %} navbar-fixed-bottom {% endif %}">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">{{ page.title }}</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li {% if page.id == 'index' %} class="active" {% endif %}>
+                    <a href="/">Главная</a>
+                </li>
+                {% if page.content.user %}
+                    <li {% if page.id == 'workspace' %} class="active" {% endif %}>
+                        <a href="/workspace">Панель</a>
+                    </li>
+                {% endif %}
+                <li {% if page.id == 'intro' %} class="active" {% endif %}>
+                    <a href="#">Инструктаж</a>
+                </li>
+                <li {% if page.id == 'faq' %} class="active" {% endif %}>
+                    <a href="#">FAQ</a>
+                </li>
+                <li {% if page.id == 'contacts' %} class="contacts" {% endif %}>
+                    <a href="#">Контакты</a>
+                </li>
+                {% if page.content.user %}
+                    <li {% if page.id == 'profile' %} class="active" {% endif %}>
+                        <a href="/profile">Профиль</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if not page.content.user %}
+                    <li>
+                        <a id="signup-link" href="/auth#signup">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Регистрация
+                        </a>
+                    </li>
+                    <li>
+                        <a id="login-link" href="/auth#login">
+                            <span class="glyphicon glyphicon-log-in"></span>
+                            Войти в систему
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a id="profile" href="/profile">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Вы вошли как: {{ page.content.user.name }}
+                        </a>
+                    </li>
+                    <li>
+                        <a id="logout" href="/logout">
+                            <span class="glyphicon glyphicon-logout"></span>
+                            Выйти
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endmacro %}

@@ -15,14 +15,14 @@ passport.use(new strategy({
     passwordField: 'password'
 }, function (username, password, done) {
     db.users.get(username, password).then((user) => {
-        return done(null, user, `User is ${ user.email } exists in database`);
+        return done(null, user, `User ${ user.email } exists in the database`);
     }).catch((err) => {
         done(err);
     })
 }));
 /*
 ================================================================
- Write a user data in session storage
+ Write a user content in session storage
 ================================================================
  <<< Promise <<<
 ================================================================
@@ -32,7 +32,7 @@ passport.serializeUser(function (user, done) {
 });
 /*
 ================================================================
- Get a user data if it exists in the database
+ Get a user content if it exists in the database
  from a session storage ###
 ================================================================
  k<<< Promise <<<

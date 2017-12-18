@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const unit = require('../controllers/user-controller');
 const log = require('../config/eye')('router[auth]');
+const Page = require('../classes/page/page');
 
 /*
 ================================================================
@@ -13,7 +14,15 @@ const log = require('../config/eye')('router[auth]');
 
 router.get('/',  (req, res) => {
     log.info('Route to the auth page');
-    res.render('auth');
+
+    let page = new Page({
+        id : 'auth',
+        content : {
+            user : req.user
+        }
+    });
+
+    res.render(page.id, page);
 });
 router.post('/login',  (req, res) => {
     log.info('Post on the login page');
