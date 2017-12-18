@@ -10,78 +10,25 @@
     <div class="hello">
         <div id="__welcomeScreen" class="modal fade" role="dialog">
             {% if page.message.info %}
-                {#{{ dump(page) }}#}
                 {{ modal.info(page.message) }}
             {% endif %}
         </div>
     </div>
     <div class="control-panel--actions col-sm-3">
-
-       {# <div class="control-panel--actions well" id="controlPanel">#}
-            {#<p class="h5">Выберите необходимую операцию</p>#}
-            <div class="actions-list">
-                <a href="#" id="action_advSearch" class="panel-action list-group-item">
-                    <p class="list-group-item-heading h3">Расширенный поиск</p>
-                    <p class="list-group-item-text h4">Поиск с параметрами и дополнительными фильтрами</p>
-                </a>
-                <a href="#" id="action_defSearch" class="panel-action list-group-item">
-                    <p class="list-group-item-heading h3">Обычный поиск</p>
-                    <p class="list-group-item-text h4">Поиск по строке и ничего лишнего</p>
-                </a>
-                <a href="#" id="action_testSearch" class="panel-action list-group-item">
-                    <p class="list-group-item-heading h3">Тестовый поиск</p>
-                    <p class="list-group-item-text h4">...</p>
-                </a>
-            </div>
-
-       {# </div>#}
-
-        {#<div class="panel panel-default" id="controlPanel">
-            <div class="panel-heading">Панель управления</div>
-            <div class="panel-body">
-                <div class="control-panel providers">
-                    <p class="h5">Выберите социальный провайдер</p>
-                    <div class="provider-opt-block vk-opt">
-                        <div class="radio">
-                            <label>
-                                <input
-                                type="radio"
-                                name="pnl__scl_opt"
-                                class="provider-switcher">Vkontakte
-                            </label>
-                        </div>
-                    </div>
-                    <div class="provider-opt-block fb-opt">
-                        <div class="radio">
-                            <label>
-                                <input
-                                type="radio"
-                                name="pnl__scl_opt"
-                                {% if not content.user.accounts.fb %}
-                                    disabled
-                                    title = "Вы еще не подключили Facebook аккаунт"
-                                {% endif %}>
-                                Facebook
-                            </label>
-                        </div>
-                    </div>
-                    <div class="provider-opt-block tw-opt">
-                        <div class="radio">
-                            <label>
-                                <input
-                                type="radio"
-                                name="pnl__scl_opt"
-                                {% if not content.user.accounts.tw %}
-                                    disabled
-                                    title = "Вы еще не подключили Twitter аккаунт"
-                                {% endif %}>
-                                Twitter
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>#}
+        <div class="actions-list">
+            <a href="#" id="action_advSearch" class="panel-action list-group-item">
+                <p class="list-group-item-heading h3">Расширенный поиск</p>
+                <p class="list-group-item-text h4">Поиск с параметрами и дополнительными фильтрами</p>
+            </a>
+            <a href="#" id="action_defSearch" class="panel-action list-group-item">
+                <p class="list-group-item-heading h3">Обычный поиск</p>
+                <p class="list-group-item-text h4">Поиск по строке и ничего лишнего</p>
+            </a>
+            <a href="#" id="action_testSearch" class="panel-action list-group-item">
+                <p class="list-group-item-heading h3">Тестовый поиск</p>
+                <p class="list-group-item-text h4">...</p>
+            </a>
+        </div>
     </div>
 
     <div id="control-panel__output" class="panel--output col-sm-9">
